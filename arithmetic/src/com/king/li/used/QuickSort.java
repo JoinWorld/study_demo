@@ -1,10 +1,11 @@
 package com.king.li.used;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
- * 快速排序
+ * 快速排序-时间复杂度O(nlogN)
  *
  * @author li
  * @create 2021-05-27-18:01
@@ -19,11 +20,9 @@ public class QuickSort {
         list.add(3);
 //        System.out.println(quickSort(list));
 
-        int[] s = new int[]{5,3,4,2,1,6,9,8,7};
+        int[] s = new int[]{5, 9, 4, 2, 1, 6, 3, 8, 7, 0};
         quickSort(s, 0, s.length - 1);
-        for (int i : s) {
-            System.out.println(i);
-        }
+        System.out.println(Arrays.toString(s));
 
     }
 
@@ -49,9 +48,6 @@ public class QuickSort {
     }
 
     public static void quickSort(int s[], int l, int r) {
-        System.out.println("l-->" + l);
-        System.out.println("r-->" + r);
-        System.out.println();
         if (l < r) {
             int i = l, j = r, x = s[l];
             while (i < j) {
@@ -65,8 +61,8 @@ public class QuickSort {
                     s[j--] = s[i];
             }
             s[i] = x;
-            quickSort(s, 0, i-1);
-            quickSort(s, i + 1, s.length - 1);
+            quickSort(s, l, i - 1);
+            quickSort(s, i + 1, r);
         }
     }
 }
